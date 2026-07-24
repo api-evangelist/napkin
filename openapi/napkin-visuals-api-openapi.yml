@@ -1,0 +1,272 @@
+openapi: 3.0.3
+info:
+  title: Napkin Visuals API
+  version: 1.1.16
+  description: 'The Napkin API turns typed or pasted text into editable visuals — diagrams, charts, icons, and infographics — programmatically. Generation is asynchronous: create a visual request, poll its status, then download the generated files (SVG, PNG, or PPT). Currently a developer preview; endpoints may change. Report issues to api@napkin.ai.'
+  contact:
+    name: Napkin API Support
+    email: api@napkin.ai
+    url: https://api.napkin.ai/
+  termsOfService: https://www.napkin.ai/terms-conditions/
+servers:
+- url: https://api.napkin.ai
+  description: Production
+tags:
+- name: Visuals
+  description: Create, poll, and download programmatic visual generations.
+paths:
+  /v1/visual:
+    post:
+      operationId: createVisualRequest
+      summary: Create a visual request
+      description: Submit text and generation options; Napkin processes the request asynchronously and returns a request identifier. Most requests complete within 10-30 seconds. Poll the status endpoint to retrieve download links when processing completes.
+      tags:
+      - Visuals
+      security:
+      - bearerAuth: []
+      - oauth2:
+        - generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VisualRequestInput'
+      responses:
+        '201':
+          description: Visual request created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisualRequest'
+        '400':
+          description: Invalid request data.
+        '401':
+          description: Authentication required or invalid token.
+        '429':
+          description: Rate limit exceeded (see Retry-After).
+        '500':
+          description: Internal server error.
+  /v1/visual/{request-id}/status:
+    get:
+      operationId: getVisualRequestStatus
+      summary: Get visual request status
+      description: Retrieve the processing status of a visual request. When status is "completed" the response includes generated_files with download metadata. Status and file URLs expire 30 minutes after generation.
+      tags:
+      - Visuals
+      security:
+      - bearerAuth: []
+      - oauth2:
+        - generation
+      parameters:
+      - name: request-id
+        in: path
+        required: true
+        description: The unique identifier of the visual request.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Request status retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisualRequestStatus'
+        '400':
+          description: Invalid request ID format.
+        '401':
+          description: Authentication required or invalid token.
+        '403':
+          description: Access denied - request belongs to another user.
+        '404':
+          description: Request not found.
+        '410':
+          description: Request has expired and is no longer available.
+        '500':
+          description: Internal server error.
+  /v1/visual/{request-id}/file/{file-id}:
+    get:
+      operationId: downloadVisualFile
+      summary: Download a generated file
+      description: Download a specific generated file for a completed visual request. Response is the raw file bytes with Content-Type (e.g. image/svg+xml) and Content-Length headers. Files are only available for requests with status "completed" and expire 30 minutes after generation.
+      tags:
+      - Visuals
+      security:
+      - bearerAuth: []
+      - oauth2:
+        - generation
+      parameters:
+      - name: request-id
+        in: path
+        required: true
+        description: Identifier for the completed visual request.
+        schema:
+          type: string
+      - name: file-id
+        in: path
+        required: true
+        description: Identifier for the specific file to download.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: File downloaded successfully.
+          content:
+            image/svg+xml: {}
+            image/png: {}
+            application/vnd.openxmlformats-officedocument.presentationml.presentation: {}
+        '400':
+          description: Invalid request ID or file ID format.
+        '401':
+          description: Authentication required or invalid token.
+        '403':
+          description: Access denied - request belongs to another user.
+        '404':
+          description: Request or file not found.
+        '410':
+          description: Request has expired and is no longer available.
+        '500':
+          description: Internal server error.
+components:
+  schemas:
+    ErrorDetail:
+      type: object
+      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    GeneratedFile:
+      type: object
+      description: A single generated output file for a completed request.
+      properties:
+        file_id:
+          type: string
+          description: Identifier used to download the file via /v1/visual/{request-id}/file/{file-id}.
+        url:
+          type: string
+          format: uri
+          description: Download URL (expires 30 minutes after generation).
+        format:
+          type: string
+          enum:
+          - svg
+          - png
+          - ppt
+    VisualRequestStatus:
+      type: object
+      description: Processing status of a visual request.
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          description: Current processing state.
+        generated_files:
+          type: array
+          description: Download links and metadata; present when status is "completed".
+          items:
+            $ref: '#/components/schemas/GeneratedFile'
+        warnings:
+          type: array
+          description: Non-fatal warning codes (since v0.8.5).
+          items:
+            type: string
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+    VisualRequestInput:
+      type: object
+      required:
+      - content
+      description: Parameters accepted by POST /v1/visual. Field set transcribed from the published API reference and changelog; only `content` is required.
+      properties:
+        content:
+          type: string
+          description: The text to transform into visuals. Maximum 100,000 bytes.
+          maxLength: 100000
+        format:
+          type: string
+          description: Output file format.
+          enum:
+          - svg
+          - png
+          - ppt
+          default: svg
+        language:
+          type: string
+          description: Content language. Optional; auto-detected when omitted (since v0.13.0).
+        number_of_visuals:
+          type: integer
+          description: How many visual variations to generate.
+        style_id:
+          type: string
+          description: Identifier of a custom style to apply to the visual request (since v0.3.0).
+        visual_id:
+          type: string
+          description: Identifier used to request generation of a specific visual.
+        visual_query:
+          type: string
+          description: A single natural-language query describing the desired visual (since v0.4.0).
+        visual_queries:
+          type: array
+          items:
+            type: string
+          description: Multiple visual queries (since v0.4.0).
+        orientation:
+          type: string
+          description: Preferred visual orientation (since v0.5.1).
+        color_mode:
+          type: string
+          description: Color mode for the generated visual (since v0.8.0). Supersedes inverted_color.
+        sort_strategy:
+          type: string
+          description: Strategy for sorting/selecting returned visuals. Supports a "variation" option for increased visual layout variety (since v1.1.4).
+        text_extraction_mode:
+          type: string
+          description: Controls how text is extracted from the input content (since v0.8.1).
+        inverted_color:
+          type: boolean
+          deprecated: true
+          description: Deprecated in v0.8.0 in favor of color_mode.
+        context_before:
+          type: string
+          deprecated: true
+          description: Deprecated in v0.5.1.
+        context_after:
+          type: string
+          deprecated: true
+          description: Deprecated in v0.5.1.
+    VisualRequest:
+      type: object
+      description: Response returned when a visual request is accepted for processing.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the created visual request.
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Napkin account API token. Create one at app.napkin.ai -> Account/Team Space Settings -> Developers -> "Create new API token". Send as: Authorization: Bearer YOUR_API_TOKEN.'
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow for acting on behalf of Napkin users. Applications must be approved by Napkin (contact api@napkin.ai) to obtain client credentials. Access token TTL 1 hour, refresh token 30 days, authorization code 10 minutes.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.napkin.ai/v1/oauth/authorize
+          tokenUrl: https://api.napkin.ai/v1/oauth/token
+          refreshUrl: https://api.napkin.ai/v1/oauth/token
+          scopes:
+            user: Access to basic user profile information (email, name, user ID).
+            generation: Ability to create visual generations on behalf of the user.
