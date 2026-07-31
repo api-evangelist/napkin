@@ -1,0 +1,37 @@
+# Napkin AI
+
+> Napkin AI turns typed or pasted text into editable visuals — diagrams, charts, icons, and infographics — and into full presentations, with no prompting or design skill required.
+
+Napkin has two products built on the same text-to-visual engine: Napkin Visuals (generate standalone diagrams, charts, and graphics from text) and Napkin Slides (beta — generate a complete, on-brand presentation deck). Both are used for docs, blog posts, social content, presentations, and internal communication. A developer API is also available for programmatic visual generation.
+
+## Product
+
+- [Napkin Visuals](https://www.napkin.ai/): Paste or type text and Napkin generates diagrams, charts, mind maps, and icons from it; fully editable colors, shapes, and layout; exports to PPT, PNG, PDF, or SVG.
+- [Napkin Slides](https://www.napkin.ai/slides/): An AI presentation agent that asks about your goal, audience, and content before building anything — producing a tailored outline you approve, then a fully editable deck, rather than a single-shot generic template. Every element (layout, visuals, branding, copy) stays editable after generation. Exports to PPTX, Google Slides, PDF, PNG, or SVG. Currently in beta: usable today, still being refined.
+
+## Pricing
+
+- [Pricing](https://www.napkin.ai/pricing/): Free, Plus, Pro, and Enterprise plans available, differing by monthly AI credits, export formats (PNG/PDF vs. PPT/SVG), custom branding, and fonts. See link for current pricing and full feature comparison.
+
+## Get Started
+
+- [Sign up or sign in](https://app.napkin.ai/signin): Create a free Napkin account (Google SSO or email) or log in to the web app. Generation and editing is desktop-only; mobile supports viewing existing Napkins only.
+
+## Support
+
+- [Help Center](https://help.napkin.ai/en/): Self-serve articles on getting started, login & account, Napkin Visuals, Napkin Slides, subscription & billing, and cross-product FAQs.
+
+## Company
+
+- [About us](https://www.napkin.ai/about-us/): Company background, mission, and team.
+- [Blog](https://www.napkin.ai/blog/): Product updates, use cases, and visual-communication tips.
+- [Careers](https://www.napkin.ai/jobs/): Open roles at Napkin AI.
+
+## API
+
+- [API overview](https://api.napkin.ai/): Developer preview — generate visuals from text programmatically, returning downloadable PNG, SVG, or PPT files. Endpoints may change. Report issues to api@napkin.ai.
+
+## Optional
+
+- [Terms and Conditions](https://www.napkin.ai/terms-conditions/): Legal terms of use.
+- [Privacy Policy](https://www.napkin.ai/privacy-policy/): Data handling and privacy practices, including AI-subprocessor and model-training opt-out details.

@@ -1,0 +1,89 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.napkin.ai/docs/changelog
+scheme: semver
+current_version: 1.1.16
+notes: Recent window of the Napkin API changelog, transcribed verbatim from the published dated log.
+entries:
+  - version: 1.1.16
+    date: '2026-03-20'
+    type: fix
+    highlights: Internal bug fixes.
+  - version: 1.1.15
+    date: '2026-03-11'
+    type: fix
+    highlights: Internal bug fixes.
+  - version: 1.1.14
+    date: '2026-03-02'
+    type: fix
+    highlights: Internal bug fixes.
+  - version: 1.1.11
+    date: '2026-02-19'
+    type: fix
+    highlights: Fixed issue where watermark position was not respected.
+  - version: 1.1.10
+    date: '2026-02-19'
+    type: fix
+    highlights: Fixed watermark appearing on paid-plan visuals.
+  - version: 1.1.4
+    date: '2026-02-06'
+    type: addition
+    highlights: Added "variation" option to the sort_strategy parameter for more layout variety.
+  - version: 1.1.2
+    date: '2026-02-04'
+    type: fix
+    highlights: Return 401 instead of 403 when the token is expired.
+  - version: 1.1.0
+    date: '2026-02-02'
+    type: improvement
+    highlights: Stabilized API processing.
+  - version: 1.0.0
+    date: '2026-01-29'
+    type: addition
+    breaking: false
+    highlights: Added Napkin AI account authentication using API tokens.
+  - version: 0.13.0
+    date: '2026-01-26'
+    type: addition
+    highlights: Made the language parameter optional with auto-detection.
+  - version: 0.12.0
+    date: '2026-01-22'
+    type: addition
+    highlights: Added error field with codes and warning codes to visual request responses.
+  - version: 0.8.3
+    date: '2025-10-13'
+    type: change
+    highlights: Validate content length not to exceed 100,000 bytes.
+  - version: 0.8.1
+    date: '2025-10-06'
+    type: addition
+    highlights: Added text_extraction_mode parameter.
+  - version: 0.8.0
+    date: '2025-10-06'
+    type: addition
+    breaking: false
+    highlights: Added color_mode parameter; deprecated inverted_color.
+  - version: 0.7.0
+    date: '2025-08-29'
+    type: addition
+    highlights: Added support for custom fonts in SVG and PNG exports.
+  - version: 0.6.0
+    date: '2025-08-14'
+    type: addition
+    highlights: Added PowerPoint (PPT) export support.
+  - version: 0.5.1
+    date: '2025-08-12'
+    type: addition
+    highlights: Added orientation parameter; deprecated context_before and context_after.
+  - version: 0.4.0
+    date: '2025-08-01'
+    type: addition
+    highlights: Added visual_query and visual_queries parameters.
+  - version: 0.3.0
+    date: '2025-07-24'
+    type: addition
+    highlights: Added support for custom styles on visual requests.
+  - version: 0.2.2
+    date: '2025-07-21'
+    type: addition
+    highlights: Initial API release.

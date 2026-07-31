@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.napkin.ai/api/create-visual-request
+docs: https://api.napkin.ai/api/get-visual-request-status
+format: http-status
+notes: >-
+  Napkin returns conventional HTTP status codes (not RFC 9457 problem+json). Visual request
+  responses also carry a structured `error` object with codes and warning codes (added v0.12.0);
+  a `warnings[]` array appears on status responses (added v0.8.5). Titles/remediation below are
+  transcribed from the published endpoint reference.
+problems:
+  - status: 400
+    title: Invalid request data
+    remediation: Check the request body / request-ID / file-ID format.
+    source_operation: openapi/napkin-openapi.yml#createVisualRequest
+  - status: 401
+    title: Authentication required or invalid token
+    remediation: Send a valid Bearer API token or OAuth access token. A 401 (not 403) is returned when a token has expired (v1.1.2).
+    source_operation: openapi/napkin-openapi.yml#createVisualRequest
+  - status: 403
+    title: Access denied - request belongs to another user
+    remediation: Only the owner of a visual request may read its status or download its files.
+    source_operation: openapi/napkin-openapi.yml#getVisualRequestStatus
+  - status: 404
+    title: Request not found
+    remediation: Verify the request-id / file-id exists.
+    source_operation: openapi/napkin-openapi.yml#getVisualRequestStatus
+  - status: 410
+    title: Request has expired and is no longer available
+    remediation: Status and file URLs expire 30 minutes after generation; re-create the visual request.
+    source_operation: openapi/napkin-openapi.yml#getVisualRequestStatus
+  - status: 429
+    title: Rate limit exceeded (Too Many Requests)
+    remediation: Requests are rate-limited by plan; back off and retry. High-volume users contact api@napkin.ai.
+    source_operation: openapi/napkin-openapi.yml#createVisualRequest
+  - status: 500
+    title: Internal server error
+    remediation: Transient server error; retry with backoff.
+    source_operation: openapi/napkin-openapi.yml#createVisualRequest

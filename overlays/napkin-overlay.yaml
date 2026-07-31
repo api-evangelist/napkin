@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Napkin API
+  version: 1.0.0
+extends: openapi/napkin-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-api-lifecycle: developer-preview
+      x-async-model: create-poll-download
+  - target: $.info
+    update:
+      x-support-email: api@napkin.ai
+      x-status-page: null
+  - target: $.components.securitySchemes.bearerAuth
+    update:
+      x-token-source: https://app.napkin.ai/signin

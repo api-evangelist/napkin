@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.napkin.ai/docs/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  release_version: 1.1.16
+  docs: https://api.napkin.ai/
+  notes: >-
+    API paths are prefixed /v1. Releases follow semver and are published in a dated changelog.
+    The API is a developer preview; endpoints may change.
+stability: developer-preview
+deprecation:
+  policy_url: https://api.napkin.ai/docs/changelog
+  sunset_header: false
+  notes: >-
+    Deprecations are announced via the changelog rather than a formal deprecation-header policy.
+    Parameters deprecated to date: inverted_color (v0.8.0, superseded by color_mode),
+    context_before and context_after (v0.5.1).
+  deprecated_parameters:
+    - name: inverted_color
+      deprecated_in: 0.8.0
+      superseded_by: color_mode
+    - name: context_before
+      deprecated_in: 0.5.1
+    - name: context_after
+      deprecated_in: 0.5.1
+status_page: null
+sla: null
+resource_expiry:
+  visual_request_status: 30 minutes after generation
+  file_download_urls: 30 minutes after generation

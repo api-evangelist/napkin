@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/napkin-openapi.yml
+docs: https://api.napkin.ai/oauth-user-authentication
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OAuth 2.0 authorization-code flow with authorize/token/revoke endpoints and named scopes.
+  - id: oauth2-bearer-rfc6750
+    conforms: true
+    evidence: Access tokens presented as Authorization=Bearer per RFC 6750.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use conventional HTTP status codes, not application/problem+json.
+  - id: openid-connect
+    conforms: false
+    evidence: OAuth authorization only; no OIDC discovery / id_token documented.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: Deprecations announced via changelog; no Sunset/Deprecation header policy documented.

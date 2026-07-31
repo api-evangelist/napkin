@@ -1,0 +1,9 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/napkin-openapi.yml
+skills:
+  - file: napkin-generate-visual.md
+    name: Generate a visual from text
+    description: Create a visual request, poll until complete, and download the generated files.
+    api: openapi/napkin-openapi.yml
+    operations: [createVisualRequest, getVisualRequestStatus, downloadVisualFile]

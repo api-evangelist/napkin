@@ -1,0 +1,14 @@
+{
+  "provider": "napkin",
+  "sources": [
+    "napkin-visuals-api-openapi.yml"
+  ],
+  "outputs": [
+    "napkin-visuals-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

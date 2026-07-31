@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/napkin-openapi.yml
+docs: https://api.napkin.ai/oauth-user-authentication
+schemes:
+  - name: oauth2
+    source: openapi/napkin-openapi.yml
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://api.napkin.ai/v1/oauth/authorize
+        tokenUrl: https://api.napkin.ai/v1/oauth/token
+        revokeUrl: https://api.napkin.ai/v1/oauth/revoke
+scopes:
+  - scope: user
+    description: Access to basic user profile information (email, name, user ID).
+    flows: [authorizationCode]
+    sources: [openapi/napkin-openapi.yml]
+  - scope: generation
+    description: Ability to create visual generations on behalf of the user.
+    flows: [authorizationCode]
+    sources: [openapi/napkin-openapi.yml]

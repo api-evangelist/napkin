@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/napkin-openapi.yml
+docs: https://api.napkin.ai/api/get-visual-request-status
+entities:
+  - name: VisualRequest
+    description: An asynchronous visual-generation job created from input text and options.
+    id_field: id
+    fields: [id, status, content, format, style_id, error]
+  - name: GeneratedFile
+    description: An output file (SVG/PNG/PPT) produced by a completed VisualRequest.
+    id_field: file_id
+    fields: [file_id, url, format]
+  - name: OAuthToken
+    description: OAuth 2.0 access/refresh token granting scopes on behalf of a user.
+    fields: [access_token, refresh_token, scope, expires_in]
+relationships:
+  - from: VisualRequest
+    to: GeneratedFile
+    type: has_many
+    via: generated_files
+    notes: A completed visual request exposes one or more generated files in generated_files[].
+  - from: GeneratedFile
+    to: VisualRequest
+    type: belongs_to
+    via: request-id
+    notes: Files are downloaded under their parent request path /v1/visual/{request-id}/file/{file-id}.

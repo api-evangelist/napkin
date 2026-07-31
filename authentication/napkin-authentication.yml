@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.napkin.ai/oauth-user-authentication
+docs: https://api.napkin.ai/api/napkin-api-documentation
+summary:
+  types: [http, oauth2]
+  http_scheme: bearer
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    description: >-
+      Napkin account API token sent as `Authorization: Bearer YOUR_API_TOKEN`. Create tokens in
+      the web app: app.napkin.ai -> Account/Team Space Settings -> Developers -> "Create new API
+      token". Multiple tokens per account are allowed. API-token auth added in v1.0.0 (2026-01-29).
+    obtain: https://app.napkin.ai/signin
+    sources: [openapi/napkin-openapi.yml]
+  - name: oauth2
+    type: oauth2
+    description: >-
+      OAuth 2.0 authorization-code flow for third-party apps acting on behalf of Napkin users.
+      Applications must be approved by Napkin (contact api@napkin.ai) to obtain client credentials.
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://api.napkin.ai/v1/oauth/authorize
+        tokenUrl: https://api.napkin.ai/v1/oauth/token
+        revokeUrl: https://api.napkin.ai/v1/oauth/revoke
+        scopes: [user, generation]
+    token_lifetimes:
+      access_token: 1 hour
+      refresh_token: 30 days
+      authorization_code: 10 minutes
+    sources: [openapi/napkin-openapi.yml]

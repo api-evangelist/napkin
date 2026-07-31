@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.napkin.ai/
+docs:
+  - https://api.napkin.ai/oauth-user-authentication
+  - https://api.napkin.ai/api/get-visual-request-status
+  - https://api.napkin.ai/faq
+authentication:
+  styles: [bearer-api-token, oauth2-authorization-code]
+  header: 'Authorization: Bearer <token>'
+  ref: authentication/napkin-authentication.yml
+base_url: https://api.napkin.ai
+versioning:
+  style: uri-path
+  current: v1
+async_processing:
+  model: create-poll-download
+  description: >-
+    Visual generation is asynchronous. POST /v1/visual returns a request id immediately; poll
+    GET /v1/visual/{request-id}/status until status is "completed", then download each file via
+    GET /v1/visual/{request-id}/file/{file-id}. Most requests complete within 10-30 seconds.
+  ref: openapi/napkin-openapi.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key mechanism is documented for the Napkin API.
+pagination:
+  supported: false
+  notes: No collection/list endpoints; generated_files is returned inline on the status response.
+resource_expiry:
+  status_and_file_urls: 30 minutes after generation
+limits:
+  max_content_length_bytes: 100000
+error_handling:
+  envelope: >-
+    Conventional HTTP status codes plus a structured `error` object (code + message) and a
+    `warnings[]` array on visual request / status responses.
+  ref: errors/napkin-problem-types.yml
+rate_limiting:
+  model: plan-based
+  signal: 429 Too Many Requests
+  notes: Numeric limits are not published; they vary by plan and shared account credits.
+output_formats: [svg, png, ppt]

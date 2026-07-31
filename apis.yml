@@ -1,7 +1,26 @@
 aid: napkin
 name: Napkin
-description: 'Napkin is a company surfaced as a portfolio company of crv and added to the API Evangelist
-  network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Napkin AI turns typed or pasted text into editable visuals — diagrams, charts, icons, and
+  infographics — and into full presentation decks, with no prompting or design skill required.
+  Two products share one text-to-visual engine: Napkin Visuals (standalone diagrams and graphics)
+  and Napkin Slides (beta AI presentation agent). Napkin also ships a developer API (currently a
+  developer preview) for generating visuals programmatically: submit text, poll the asynchronous
+  request, and download the results as SVG, PNG, or PPT. The API authenticates with account bearer
+  tokens or an OAuth 2.0 authorization-code flow. Napkin is an AI company backed by CRV.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.napkin.ai/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/napkin/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,16 +30,106 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Ai
-apis: []
+- Visualization
+- Diagrams
+- Infographics
+- Presentations
+- Content Generation
+- Developer API
+- Design
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: napkin:napkin-visuals-api
+  name: Napkin Visuals API
+  description: Create, poll, and download programmatic visual generations.
+  humanURL: https://api.napkin.ai/
+  baseURL: https://api.napkin.ai
+  tags:
+  - Visuals
+  properties:
+  - type: OpenAPI
+    url: openapi/napkin-visuals-api-openapi.yml
+  - type: Authentication
+    url: authentication/napkin-authentication.yml
+  - type: OAuthScopes
+    url: scopes/napkin-scopes.yml
+  - type: ErrorCatalog
+    url: errors/napkin-problem-types.yml
+  - type: Conventions
+    url: conventions/napkin-conventions.yml
+  - type: DataModel
+    url: data-model/napkin-data-model.yml
+  - type: Conformance
+    url: conformance/napkin-conformance.yml
 common:
+- type: AgenticAccess
+  url: agentic-access/napkin-agentic-access.yml
 - type: Website
   url: https://www.napkin.ai/
+- type: DeveloperPortal
+  url: https://api.napkin.ai/
+- type: Documentation
+  url: https://api.napkin.ai/
+- type: APIReference
+  url: https://api.napkin.ai/api/create-visual-request
+- type: GettingStarted
+  url: https://api.napkin.ai/
+- type: ChangeLog
+  url: https://api.napkin.ai/docs/changelog
+- type: Support
+  url: https://help.napkin.ai/en/
+- type: Blog
+  url: https://www.napkin.ai/blog/
+- type: Pricing
+  url: https://www.napkin.ai/pricing/
+- type: SignUp
+  url: https://app.napkin.ai/signin
+- type: TermsOfService
+  url: https://www.napkin.ai/terms-conditions/
+- type: PrivacyPolicy
+  url: https://www.napkin.ai/privacy-policy/
+- type: Authentication
+  url: authentication/napkin-authentication.yml
+- type: OAuthScopes
+  url: scopes/napkin-scopes.yml
+- type: Lifecycle
+  url: lifecycle/napkin-lifecycle.yml
+- type: Deprecation
+  url: https://api.napkin.ai/docs/changelog
+- type: Conventions
+  url: conventions/napkin-conventions.yml
+- type: ErrorCatalog
+  url: errors/napkin-problem-types.yml
+- type: LLMsTxt
+  url: llms/napkin-llms.txt
+- type: WellKnown
+  url: well-known/napkin-well-known.yml
+- type: SecurityTxt
+  url: well-known/napkin-security.txt
+- type: VulnerabilityDisclosure
+  url: security/napkin-vulnerability-disclosure.yml
+- type: Security
+  url: https://vdp.napkin.ai
+- type: DomainSecurity
+  url: security/napkin-domain-security.yml
+- type: MCPServer
+  url: mcp/napkin-mcp.yml
+- type: AgentSkill
+  url: skills/napkin-generate-visual.md
+- type: DataModel
+  url: data-model/napkin-data-model.yml
+- type: Conformance
+  url: conformance/napkin-conformance.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
