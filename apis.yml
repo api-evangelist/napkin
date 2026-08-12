@@ -70,6 +70,8 @@ apis:
   - type: Conformance
     url: conformance/napkin-conformance.yml
 common:
+- type: Overlay
+  url: overlays/napkin-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/napkin-agentic-access.yml
 - type: Website
