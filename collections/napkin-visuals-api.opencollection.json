@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Napkin Visuals API",
+    "version": "1.1.16"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visuals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a visual request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.napkin.ai/v1/visual",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit text and generation options; Napkin processes the request asynchronously and returns a request identifier. Most requests complete within 10-30 seconds. Poll the status endpoint to retrieve download links when processing completes."
+        },
+        {
+          "info": {
+            "name": "Get visual request status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.napkin.ai/v1/visual/:request-id/status",
+            "params": [
+              {
+                "name": "request-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the visual request."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the processing status of a visual request. When status is \"completed\" the response includes generated_files with download metadata. Status and file URLs expire 30 minutes after generation."
+        },
+        {
+          "info": {
+            "name": "Download a generated file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.napkin.ai/v1/visual/:request-id/file/:file-id",
+            "params": [
+              {
+                "name": "request-id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the completed visual request."
+              },
+              {
+                "name": "file-id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the specific file to download."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download a specific generated file for a completed visual request. Response is the raw file bytes with Content-Type (e.g. image/svg+xml) and Content-Length headers. Files are only available for requests with status \"completed\" and expire 30 minutes after generation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

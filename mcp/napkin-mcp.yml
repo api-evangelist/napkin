@@ -2,21 +2,26 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/napkin-openapi.yml
-notes: >-
-  No official hosted/remote Napkin MCP server was found (no listing in docs or the MCP registry
-  as of this pass). Candidate tool list derived one-per-operation from the documented API so an
-  MCP wrapper could be generated. Not an official Napkin server.
+notes: No official hosted/remote Napkin MCP server was found (no listing in docs or the MCP registry as
+  of this pass). Candidate tool list derived one-per-operation from the documented API so an MCP wrapper
+  could be generated. Not an official Napkin server.
 server:
   name: napkin
   transport: http
   url: null
 tools:
-  - name: create_visual_request
-    description: Submit text and options to generate visuals asynchronously; returns a request id.
-    source_operation: openapi/napkin-openapi.yml#createVisualRequest
-  - name: get_visual_request_status
-    description: Poll the status of a visual request; returns generated_files when completed.
-    source_operation: openapi/napkin-openapi.yml#getVisualRequestStatus
-  - name: download_visual_file
-    description: Download a generated file (SVG/PNG/PPT) for a completed visual request.
-    source_operation: openapi/napkin-openapi.yml#downloadVisualFile
+- name: create_visual_request
+  description: Submit text and options to generate visuals asynchronously; returns a request id.
+  source_operation: openapi/napkin-openapi.yml#createVisualRequest
+- name: get_visual_request_status
+  description: Poll the status of a visual request; returns generated_files when completed.
+  source_operation: openapi/napkin-openapi.yml#getVisualRequestStatus
+- name: download_visual_file
+  description: Download a generated file (SVG/PNG/PPT) for a completed visual request.
+  source_operation: openapi/napkin-openapi.yml#downloadVisualFile
+deployment:
+  mode: none
+  verified: derived
+  tools: 3
+  checked: '2026-08-12'
+  source: catalog MCP census

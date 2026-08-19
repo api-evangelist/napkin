@@ -1,0 +1,1213 @@
+{
+  "item": [
+    {
+      "id": "ebfc4df8-6832-4814-9923-e61d85604122",
+      "name": "Visuals",
+      "description": {
+        "content": "Create, poll, and download programmatic visual generations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47a7dd1b-e660-4d59-96be-72831727d155",
+          "name": "Create a visual request",
+          "request": {
+            "name": "Create a visual request",
+            "description": {
+              "content": "Submit text and generation options; Napkin processes the request asynchronously and returns a request identifier. Most requests complete within 10-30 seconds. Poll the status endpoint to retrieve download links when processing completes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "visual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"<string>\",\n  \"format\": \"svg\",\n  \"language\": \"<string>\",\n  \"number_of_visuals\": \"<integer>\",\n  \"style_id\": \"<string>\",\n  \"visual_id\": \"<string>\",\n  \"visual_query\": \"<string>\",\n  \"visual_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orientation\": \"<string>\",\n  \"color_mode\": \"<string>\",\n  \"sort_strategy\": \"<string>\",\n  \"text_extraction_mode\": \"<string>\",\n  \"inverted_color\": \"<boolean>\",\n  \"context_before\": \"<string>\",\n  \"context_after\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "baa368cf-96a3-4f09-8031-d74cc2157eea",
+              "name": "Visual request created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"format\": \"svg\",\n  \"language\": \"<string>\",\n  \"number_of_visuals\": \"<integer>\",\n  \"style_id\": \"<string>\",\n  \"visual_id\": \"<string>\",\n  \"visual_query\": \"<string>\",\n  \"visual_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orientation\": \"<string>\",\n  \"color_mode\": \"<string>\",\n  \"sort_strategy\": \"<string>\",\n  \"text_extraction_mode\": \"<string>\",\n  \"inverted_color\": \"<boolean>\",\n  \"context_before\": \"<string>\",\n  \"context_after\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"completed\",\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e4b53af-e0b1-4f6e-a03c-7ce7b9ea196b",
+              "name": "Invalid request data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"format\": \"svg\",\n  \"language\": \"<string>\",\n  \"number_of_visuals\": \"<integer>\",\n  \"style_id\": \"<string>\",\n  \"visual_id\": \"<string>\",\n  \"visual_query\": \"<string>\",\n  \"visual_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orientation\": \"<string>\",\n  \"color_mode\": \"<string>\",\n  \"sort_strategy\": \"<string>\",\n  \"text_extraction_mode\": \"<string>\",\n  \"inverted_color\": \"<boolean>\",\n  \"context_before\": \"<string>\",\n  \"context_after\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f92b2592-09cd-41e8-8513-1047aa894e0b",
+              "name": "Authentication required or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"format\": \"svg\",\n  \"language\": \"<string>\",\n  \"number_of_visuals\": \"<integer>\",\n  \"style_id\": \"<string>\",\n  \"visual_id\": \"<string>\",\n  \"visual_query\": \"<string>\",\n  \"visual_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orientation\": \"<string>\",\n  \"color_mode\": \"<string>\",\n  \"sort_strategy\": \"<string>\",\n  \"text_extraction_mode\": \"<string>\",\n  \"inverted_color\": \"<boolean>\",\n  \"context_before\": \"<string>\",\n  \"context_after\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8a96cc9-3746-4c73-86a0-2dbdbd20a96a",
+              "name": "Rate limit exceeded (see Retry-After).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"format\": \"svg\",\n  \"language\": \"<string>\",\n  \"number_of_visuals\": \"<integer>\",\n  \"style_id\": \"<string>\",\n  \"visual_id\": \"<string>\",\n  \"visual_query\": \"<string>\",\n  \"visual_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orientation\": \"<string>\",\n  \"color_mode\": \"<string>\",\n  \"sort_strategy\": \"<string>\",\n  \"text_extraction_mode\": \"<string>\",\n  \"inverted_color\": \"<boolean>\",\n  \"context_before\": \"<string>\",\n  \"context_after\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "002fd45b-d32a-45a5-9874-c47ca0a1a1dc",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"format\": \"svg\",\n  \"language\": \"<string>\",\n  \"number_of_visuals\": \"<integer>\",\n  \"style_id\": \"<string>\",\n  \"visual_id\": \"<string>\",\n  \"visual_query\": \"<string>\",\n  \"visual_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"orientation\": \"<string>\",\n  \"color_mode\": \"<string>\",\n  \"sort_strategy\": \"<string>\",\n  \"text_extraction_mode\": \"<string>\",\n  \"inverted_color\": \"<boolean>\",\n  \"context_before\": \"<string>\",\n  \"context_after\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9468625-bc96-4bb5-ae75-605c72589b46",
+          "name": "Get visual request status",
+          "request": {
+            "name": "Get visual request status",
+            "description": {
+              "content": "Retrieve the processing status of a visual request. When status is \"completed\" the response includes generated_files with download metadata. Status and file URLs expire 30 minutes after generation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "visual",
+                ":request-id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "request-id",
+                  "description": "(Required) The unique identifier of the visual request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8713516a-891e-43f7-bb15-4c5a8ca09e0d",
+              "name": "Request status retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failed\",\n  \"generated_files\": [\n    {\n      \"file_id\": \"string\",\n      \"url\": \"https://SxInxtHCy.mwiz5H-M0q5m5lKahkubyR5wyqcaL1CbaGLN+DVwCvQ+\",\n      \"format\": \"ppt\"\n    },\n    {\n      \"file_id\": \"string\",\n      \"url\": \"http://jzcaHAIVTKNsEHPfjajiHLP.ulhzKZ8tlIp2l+sk-g9zLqyRuH5hbq7kYkWnjYlnoJoZGWxyKEai6AGPltoSNQN\",\n      \"format\": \"ppt\"\n    }\n  ],\n  \"warnings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26636d1d-734a-4457-8a05-0a27a9449a4f",
+              "name": "Invalid request ID format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31313c33-41cd-4a9d-b453-e35469bff912",
+              "name": "Authentication required or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "969ff9bc-3fe8-4e1b-a836-cdd96fb91e33",
+              "name": "Access denied - request belongs to another user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "781d00f0-ca54-4213-87b1-f321acae19c9",
+              "name": "Request not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22368215-5098-4dbc-b3fb-40a6b8d978dc",
+              "name": "Request has expired and is no longer available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb3fbad1-7f50-4b56-818f-3565b68df9db",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) The unique identifier of the visual request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a9f78b5-b106-464b-9344-14e7884ca3db",
+          "name": "Download a generated file",
+          "request": {
+            "name": "Download a generated file",
+            "description": {
+              "content": "Download a specific generated file for a completed visual request. Response is the raw file bytes with Content-Type (e.g. image/svg+xml) and Content-Length headers. Files are only available for requests with status \"completed\" and expire 30 minutes after generation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "visual",
+                ":request-id",
+                "file",
+                ":file-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "request-id",
+                  "description": "(Required) Identifier for the completed visual request."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file-id",
+                  "description": "(Required) Identifier for the specific file to download."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/svg+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "942988bc-5f15-49fd-ab9d-3459a6bc81cf",
+              "name": "File downloaded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/svg+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/svg+xml"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e3d82ee7-7a9c-4f2d-9fde-64cf14e232c9",
+              "name": "Invalid request ID or file ID format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c32f0de-e449-4e31-b778-45e847176078",
+              "name": "Authentication required or invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b48cdf9-d240-4389-8e97-b91d98a3b555",
+              "name": "Access denied - request belongs to another user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f0a9ece-b1e7-4fa3-b41d-0ebed2333dc8",
+              "name": "Request or file not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dcb15f74-c789-4c56-b391-ca42295c7313",
+              "name": "Request has expired and is no longer available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab5e0eb5-bb9e-4bda-91e9-4c426dbd7779",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "visual",
+                    ":request-id",
+                    "file",
+                    ":file-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request-id",
+                      "description": "(Required) Identifier for the completed visual request."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file-id",
+                      "description": "(Required) Identifier for the specific file to download."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.napkin.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c3b89b86-e019-428b-8c8d-01df7c3d8231",
+    "name": "Napkin Visuals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Napkin API turns typed or pasted text into editable visuals — diagrams, charts, icons, and infographics — programmatically. Generation is asynchronous: create a visual request, poll its status, then download the generated files (SVG, PNG, or PPT). Currently a developer preview; endpoints may change. Report issues to api@napkin.ai.\n\nContact Support:\n Name: Napkin API Support\n Email: api@napkin.ai",
+      "type": "text/plain"
+    }
+  }
+}
