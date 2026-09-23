@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Napkin Visuals API
   version: 1.1.16
@@ -129,31 +129,6 @@ paths:
           description: Internal server error.
 components:
   schemas:
-    ErrorDetail:
-      type: object
-      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    GeneratedFile:
-      type: object
-      description: A single generated output file for a completed request.
-      properties:
-        file_id:
-          type: string
-          description: Identifier used to download the file via /v1/visual/{request-id}/file/{file-id}.
-        url:
-          type: string
-          format: uri
-          description: Download URL (expires 30 minutes after generation).
-        format:
-          type: string
-          enum:
-          - svg
-          - png
-          - ppt
     VisualRequestStatus:
       type: object
       description: Processing status of a visual request.
@@ -177,6 +152,46 @@ components:
             type: string
         error:
           $ref: '#/components/schemas/ErrorDetail'
+    GeneratedFile:
+      type: object
+      description: A single generated output file for a completed request.
+      properties:
+        file_id:
+          type: string
+          description: Identifier used to download the file via /v1/visual/{request-id}/file/{file-id}.
+        url:
+          type: string
+          format: uri
+          description: Download URL (expires 30 minutes after generation).
+        format:
+          type: string
+          enum:
+          - svg
+          - png
+          - ppt
+    VisualRequest:
+      type: object
+      description: Response returned when a visual request is accepted for processing.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the created visual request.
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+    ErrorDetail:
+      type: object
+      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     VisualRequestInput:
       type: object
       required:
@@ -239,21 +254,6 @@ components:
           type: string
           deprecated: true
           description: Deprecated in v0.5.1.
-    VisualRequest:
-      type: object
-      description: Response returned when a visual request is accepted for processing.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the created visual request.
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          - failed
-        error:
-          $ref: '#/components/schemas/ErrorDetail'
   securitySchemes:
     bearerAuth:
       type: http
