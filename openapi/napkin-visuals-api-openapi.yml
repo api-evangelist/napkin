@@ -129,21 +129,14 @@ paths:
           description: Internal server error.
 components:
   schemas:
-    VisualRequest:
+    ErrorDetail:
       type: object
-      description: Response returned when a visual request is accepted for processing.
+      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
       properties:
-        id:
+        code:
           type: string
-          description: Unique identifier of the created visual request.
-        status:
+        message:
           type: string
-          enum:
-          - pending
-          - completed
-          - failed
-        error:
-          $ref: '#/components/schemas/ErrorDetail'
     GeneratedFile:
       type: object
       description: A single generated output file for a completed request.
@@ -161,14 +154,21 @@ components:
           - svg
           - png
           - ppt
-    ErrorDetail:
+    VisualRequest:
       type: object
-      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
+      description: Response returned when a visual request is accepted for processing.
       properties:
-        code:
+        id:
           type: string
-        message:
+          description: Unique identifier of the created visual request.
+        status:
           type: string
+          enum:
+          - pending
+          - completed
+          - failed
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
     VisualRequestStatus:
       type: object
       description: Processing status of a visual request.
