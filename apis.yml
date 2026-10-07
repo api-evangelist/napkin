@@ -92,6 +92,8 @@ apis:
   - type: Conformance
     url: conformance/napkin-conformance.yml
 common:
+- type: Plans
+  url: plans/napkin-plans-pricing.yml
 - type: Overlay
   url: overlays/napkin-overlay.yaml
 - type: AgenticAccess
