@@ -1,0 +1,88 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://www.napkin.ai/pricing/
+sources:
+- https://www.napkin.ai/pricing/
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+  managed_tier: Plus
+published: true
+note: Consumer/business subscription tiers with AI credit allowances; annual billing saves 25%. API is
+  mentioned in nav but not priced separately.
+plan_count: 4
+currency: USD
+plans:
+- name: Free Forever
+  price_text: $0
+  price: 0
+  currency: USD
+  period: month
+  unit: per person
+  included_quota: 500 AI credits per week
+- name: Plus
+  price_text: $9 per person / month
+  price: 9
+  currency: USD
+  period: month
+  unit: per person
+  included_quota: 10,000 AI credits per month
+  overage: you can also purchase additional credits at any time
+- name: Pro
+  price_text: $22 per person / month
+  price: 22
+  currency: USD
+  period: month
+  unit: per person
+  included_quota: 30,000 AI credits per month
+  overage: Optional credit top ups
+- name: Enterprise
+  price_text: Contact Us
+  period: none
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - hybrid
+  units: []
+  plans:
+  - name: Free Forever
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Plus
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
