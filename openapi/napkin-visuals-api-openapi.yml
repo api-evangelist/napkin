@@ -129,6 +129,52 @@ paths:
           description: Internal server error.
 components:
   schemas:
+    VisualRequestStatus:
+      type: object
+      description: Processing status of a visual request.
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          description: Current processing state.
+        generated_files:
+          type: array
+          description: Download links and metadata; present when status is "completed".
+          items:
+            $ref: '#/components/schemas/GeneratedFile'
+        warnings:
+          type: array
+          description: Non-fatal warning codes (since v0.8.5).
+          items:
+            type: string
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+    VisualRequest:
+      type: object
+      description: Response returned when a visual request is accepted for processing.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the created visual request.
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+    ErrorDetail:
+      type: object
+      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     VisualRequestInput:
       type: object
       required:
@@ -191,37 +237,6 @@ components:
           type: string
           deprecated: true
           description: Deprecated in v0.5.1.
-    VisualRequestStatus:
-      type: object
-      description: Processing status of a visual request.
-      properties:
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          - failed
-          description: Current processing state.
-        generated_files:
-          type: array
-          description: Download links and metadata; present when status is "completed".
-          items:
-            $ref: '#/components/schemas/GeneratedFile'
-        warnings:
-          type: array
-          description: Non-fatal warning codes (since v0.8.5).
-          items:
-            type: string
-        error:
-          $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
-      type: object
-      description: Error object with codes and warning codes on visual request responses (since v0.12.0).
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     GeneratedFile:
       type: object
       description: A single generated output file for a completed request.
@@ -239,21 +254,6 @@ components:
           - svg
           - png
           - ppt
-    VisualRequest:
-      type: object
-      description: Response returned when a visual request is accepted for processing.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the created visual request.
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          - failed
-        error:
-          $ref: '#/components/schemas/ErrorDetail'
   securitySchemes:
     bearerAuth:
       type: http
